@@ -1,0 +1,36 @@
+@media screen and (max-width: 900px) {
+  .vertical-responsive .ant-table {
+    tbody, td {
+      display: block;
+    }
+    &-thead {
+      display: none;
+    }
+
+    &-thead > tr,
+    &-tbody > tr {
+
+      th,
+      td {
+        &:first-of-type {
+          padding-top: 1rem;
+        }
+
+        &:last-of-type {
+          padding-bottom: 1rem;
+        }
+      }
+
+      > th,
+      > td {
+        display: block;
+        width: 100vw !important;
+        border: none;
+        padding: 0 1rem;
+        &:last-child {
+          border-bottom: 1px solid #eee;
+        }
+      }
+    }
+  }
+}

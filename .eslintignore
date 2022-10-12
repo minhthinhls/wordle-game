@@ -1,0 +1,20 @@
+.github
+.vscode
+.history
+/lambda
+/scripts
+/config
+/coverage
+/mock
+/lib
+/public
+/tests
+
+__tests__
+/e2e
+/assets
+serviceWorker.ts
+src/reportWebVitals.ts
+
+# Zopim
+src/assets/js/widget.js

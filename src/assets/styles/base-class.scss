@@ -1,0 +1,116 @@
+@import "./variables.scss";
+@import "@/assets/styles/mixins.scss";
+
+// 主题字体颜色
+.theme-font-color {
+  color: $theme-color !important;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+.wbba {
+  word-break: break-all;
+}
+
+.wspw {
+  white-space: pre-wrap;
+}
+
+.oya {
+  overflow-y: auto !important;
+}
+
+.tac {
+  text-align: center;
+}
+
+.wpr {
+  white-space: pre;
+}
+
+.udn {
+  -webkit-user-drag: none;
+}
+
+.mt10 {
+  margin-top: 10px !important;
+}
+
+.w100 {
+  width: 100% !important;
+}
+
+.w150px {
+  width: 150px !important;
+}
+
+.ant-select-item-option-disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-red {
+  color: red !important;
+}
+
+.text-green {
+  color: green !important;
+}
+
+.text-yellow {
+  color: yellow !important;
+}
+
+.text-blue {
+  color: blue !important;
+}
+
+.text-border-dark {
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+
+.text-border-light {
+  text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+
+.flash {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.button-warning {
+  color: white;
+  border-color: orange;
+  background-color: orange;
+}
+.button-warning:hover, .button-warning:active, .button-warning:focus {
+  color: white;
+  border-color: orange;
+  background-color: #ff6f00;
+}
+
+.button-success {
+  color: white;
+  border-color: #00a754;
+  background-color: #00a754;
+}
+.button-success:hover, .button-success:active, .button-success:focus {
+  color: white;
+  border-color: #01713b;
+  background-color: #007f45;
+}
