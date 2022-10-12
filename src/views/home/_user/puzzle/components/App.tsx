@@ -29,6 +29,7 @@ const mapDispatchToProps = __DispatchProvider__((dispatch, actions) => {
   return {
     onKeyDown: (value: string) => dispatch(actions.Puzzle.onKeyDown(value)),
     setPuzzleWord: (value: string) => dispatch(actions.Puzzle.setPuzzleWord(value)),
+    setPuzzleSeed: (value: string) => dispatch(actions.Puzzle.setPuzzleSeed(value)),
   };
 });
 
@@ -40,6 +41,7 @@ const App: ReactFC<IProps, typeof mapStateToProps, typeof mapDispatchToProps> = 
 }) {
   useEffect(() => {
     props.setPuzzleWord('begin');
+    props.setPuzzleSeed('12345');
   }, []);
 
   return (

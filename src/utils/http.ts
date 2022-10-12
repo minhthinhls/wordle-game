@@ -1,6 +1,5 @@
 import axios, {AxiosError} from 'axios';
 import {message, notification} from 'antd';
-import {logout} from '@/store/actions';
 import CONFIG from '@/config';
 import store from '@/store';
 
@@ -42,7 +41,7 @@ const httpInstance = axios.create({
 
 httpInstance.defaults.headers.common.isLoading = true;
 httpInstance.defaults.headers.common.successAlert = false;
-httpInstance.defaults.headers.common.errorAlert = true;
+httpInstance.defaults.headers.common.errorAlert = false;
 Object.setPrototypeOf(httpInstance, axios);
 
 httpInstance.interceptors.request.use(function (config) {
@@ -100,6 +99,7 @@ httpInstance.interceptors.response.use(function (res) {
 
     if (data.errorCode === 401 && !exiting && localStorage.getItem(LOCAL_STORAGE.USER)) {
         exiting = true;
+        const logout = () => void 0;
         setTimeout(logout, 2000);
     }
 

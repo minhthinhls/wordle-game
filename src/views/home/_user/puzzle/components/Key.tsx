@@ -20,15 +20,18 @@ declare interface IProps extends Required<{
 
 const mapStateToProps = __StorageProvider__((store) => {
   return {
+    store: store,
     isGameOver: store.puzzle.isGameOver,
     attempt: store.puzzle.attempt,
     board: store.puzzle.board,
+    seed: store.puzzle.seed,
   };
 });
 
 const mapDispatchToProps = __DispatchProvider__((dispatch, actions) => {
   return {
     onKeyDown: (value: string) => dispatch(actions.Puzzle.onKeyDown(value)),
+    onEnter: actions.Puzzle.onEnter.bind(null, dispatch),
   };
 });
 
@@ -41,9 +44,12 @@ const Key: ReactFC<IProps, typeof mapStateToProps, typeof mapDispatchToProps> = 
   disabled,
   ...props
 }) {
-  const onClick = () => {
+  const onClick = async () => {
     if (props.isGameOver) return;
-    props.onKeyDown(value);
+    if (value === "ENTER") {
+      return props.onEnter(props.store);
+    }
+    return props.onKeyDown(value);
   };
 
   return (

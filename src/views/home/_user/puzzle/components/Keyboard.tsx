@@ -16,21 +16,21 @@ declare interface IProps extends Required<{
 
 const mapStateToProps = __StorageProvider__((store) => {
   return {
+    store: store,
     user: store.user,
     isGameOver: store.puzzle.isGameOver,
     resolved: store.puzzle.resolved,
     disabled: store.puzzle.disabled,
     attempt: store.puzzle.attempt,
     board: store.puzzle.board,
+    seed: store.puzzle.seed,
   };
 });
 
 const mapDispatchToProps = __DispatchProvider__((dispatch, actions) => {
   return {
-    setUser: () => dispatch(actions.User.setUser()),
-    onEnter: () => null,
-    onDelete: () => null,
     onKeyDown: (value: string) => dispatch(actions.Puzzle.onKeyDown(value)),
+    onEnter: actions.Puzzle.onEnter.bind(null, dispatch),
   };
 });
 
@@ -46,9 +46,20 @@ const Keyboard: ReactFC<IProps, typeof mapStateToProps, typeof mapDispatchToProp
     ["Z", "X", "C", "V", "B", "N", "M", "BACKSPACE"],
   ];
 
-  const handleKeyboard = useCallback((event) => {
-    props.onKeyDown(event.key);
+  /* - Since `props.store` need to fetch the latest value, do not put inside useCallback for memoization.
+  const handleKeyboard = useCallback(async (event) => {
+    if (event.key === "Enter") {
+      return props.onEnter(props.store);
+    }
+    return props.onKeyDown(event.key);
   }, []);
+  */
+  const handleKeyboard = async (event: KeyboardEvent | any) => {
+    if (event.key === "Enter") {
+      return props.onEnter(props.store);
+    }
+    return props.onKeyDown(event.key);
+  };
 
   useEffect(() => {
     document.addEventListener("keydown", handleKeyboard);

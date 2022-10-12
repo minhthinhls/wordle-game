@@ -1,7 +1,9 @@
 import http from "@/utils/http";
 
 /** Import Pre-Defined Types Helper !*/
-import type {IResponse, NullableProps} from "@types";
+import type {NullableProps} from "@types";
+/** Import Pre-Defined Types Helper !*/
+import type {AxiosResponse} from "axios";
 /** Import Pre-Defined Types Helper !*/
 import type {IGuessBody} from "./schema";
 
@@ -13,7 +15,7 @@ declare interface IGuessDailyParams extends NullableProps<{
 }
 
 /** - Send email to reset password !*/
-export function serviceDailyGuess(params: IGuessDailyParams): IResponse<IGuessBody> {
+export function serviceDailyGuess(params: IGuessDailyParams): Promise<AxiosResponse<IGuessBody>> {
     return http.get('/daily', {
         params: params,
     });
