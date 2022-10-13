@@ -2,10 +2,11 @@ import "./App.css";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import GameOver from "./Gameover";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {__StorageProvider__} from '@/store';
 import {__DispatchProvider__} from '@/store';
 import {connect} from "react-redux";
+import {random} from "@/utils";
 
 import type {ReactFC} from "@/type";
 
@@ -39,9 +40,15 @@ const App: ReactFC<IProps, typeof mapStateToProps, typeof mapDispatchToProps> = 
   location,
   ...props
 }) {
+  const [seed, setSeed] = useState('');
+
+  useEffect(() => {
+    props.setPuzzleSeed(`${seed}`);
+  }, [seed]);
+
   useEffect(() => {
     props.setPuzzleWord('begin');
-    props.setPuzzleSeed('12345');
+    setSeed(`${random(1, 1000)}`);
   }, []);
 
   return (

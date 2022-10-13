@@ -1,9 +1,9 @@
 import {Switch, Route, Redirect, withRouter, RouteComponentProps} from 'react-router-dom';
 import AccessDined from '@/views/exception/403';
+import __RootReducer__ from '@/store/reducers';
 import {IRouteProps} from '@/router/types';
 import {HOME} from '@/router/constants';
 import {connect} from 'react-redux';
-import {IStoreState} from '@/store';
 import CONFIG from '@/config';
 import qs from 'query-string';
 import React from 'react';
@@ -41,6 +41,7 @@ const PrivateRoute: React.FC<Props> = function ({
     return <Redirect to={url}/>;
   }
 
+  /** @ts-ignore */
   if (!userInfo || meta?.requiresRoles && !meta?.requiresRoles.includes(userInfo?.role?.name)) {
     return <AccessDined/>;
   }
@@ -69,7 +70,7 @@ const PrivateRoute: React.FC<Props> = function ({
   );
 };
 
-const mapStateToProps = (state: IStoreState) => {
+const mapStateToProps = (state: ReturnType<typeof __RootReducer__>) => {
   return {
     isLogin: state.user.isLogin,
     userInfo: state.user.userInfo

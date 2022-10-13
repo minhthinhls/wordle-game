@@ -4,6 +4,28 @@ import {setVisitor} from "@/utils/widget";
 
 const {LOGIN} = USER;
 
+export declare interface IUser extends Record<string, any>, Required<{
+    /* [[Mandatory Attributes Placeholder]] */
+    id: string;
+    username: string;
+    fullName: string;
+    avatarUrl: string;
+    email: string;
+    phoneNumber: string;
+    country: string;
+    dateOfBirth: string;
+    role: IUserRole;
+    token: string;
+    referralCode: string;
+    emailVerified: boolean;
+    createdAt: string;
+    updatedAt: string;
+}>, Partial<{
+    /* [[Optional Attributes Placeholder]] */
+}> {
+    /* [[Default Attributes Placeholder]] */
+}
+
 export interface IUserRole {
     name: ROLE;
 }

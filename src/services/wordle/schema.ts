@@ -8,8 +8,8 @@ export enum VALIDATION {
  ** - Customized Wrapper for Axios Response.
  ** @see {@link https://axios-http.com/docs/res_schema}
  **/
-export declare type IGuessBody = {
+export declare type IGuessBody = Array<{
     slot: number;
     guess: string;
     result: VALIDATION;
-};
+}>;

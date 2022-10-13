@@ -1,4 +1,4 @@
-import {LOCAL_STORAGE, Role} from "@/constants";
+import {LOCAL_STORAGE, ROLE} from "@/constants";
 import {IUser} from "@/store/reducers/user";
 
 /**
@@ -31,7 +31,7 @@ export function formatBalance(value: number, fixed = 0): string {
     let denominator = 1000;
     try {
         userInfo = JSON.parse(window.localStorage.getItem(LOCAL_STORAGE.USER) as string);
-        if (userInfo.role.name !== Role.MEMBER) {
+        if (userInfo.role.name !== ROLE.MEMBER) {
             denominator = 1;
         } else {
             denominator = 1000;
