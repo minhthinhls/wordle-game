@@ -22,6 +22,7 @@ module.exports = {
   },
   globals: {
     page: true,
+    Awaited: true,
     WeakMap: false,
     WeakSet: false,
     REACT_APP_ENV: true,

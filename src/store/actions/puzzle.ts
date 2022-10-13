@@ -8,6 +8,7 @@ export function onKeyDown(button: string) {
     };
 }
 
+/** @ts-ignore */
 export function onKeyEnter(comparators: Awaited<ReturnType<typeof serviceRandomGuess>>['data']) {
     return {
         type: "ENTER",
